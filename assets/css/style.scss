@@ -55,15 +55,6 @@ body {
   background: #fff;
 }
 
-pre.highlight, div.highlighter-rouge pre {
-  border-radius: 10px;
-  border: 1px solid #e6ecf1;
-  background: #0b1020; /* code sombre lisible */
-  color: #e6edf3;
-  padding: 1rem 1.2rem;
-  overflow: auto;
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -103,4 +94,8 @@ figure, img {
 .callout.ok {
   border-left-color: #22c55e;
   background: #f0fff4;
+}
+
+small {
+  display: none !important;
 }
