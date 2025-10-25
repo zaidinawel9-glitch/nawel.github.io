@@ -1,7 +1,7 @@
 R Notebook
 ================
 
-\# Cette première commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
+Cette première commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
 
 ``` r
 path <- "~/tutirial_ADM/MiSeq_SOP"
@@ -47,8 +47,8 @@ packageVersion("dada2")
 
     ## [1] '1.28.0'
 
-\#On liste les fichiers R1 (forward) et R2 (reverse) avec list.files()
-\# puis on extrait le nom d’échantillon (ex. “F3D0”) du nom complet du
+On liste les fichiers R1 (forward) et R2 (reverse) avec list.files()
+puis on extrait le nom d’échantillon (ex. “F3D0”) du nom complet du
 fichier FASTQ grâce à la fonction sapply(strsplit(…), `[`, 1).
 
 ``` r
@@ -58,8 +58,8 @@ fnRs <- sort(list.files(path, pattern="_R2_001.fastq", full.names = TRUE))
 sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 ```
 
-\#Commande pour tracer un graphique(un plot) qui montre la diminution
-des scores de qualité le long des séquences. \# afin de repérer où la
+Commande pour tracer un graphique(un plot) qui montre la diminution
+des scores de qualité le long des séquences. afin de repérer où la
 qualité baisse et décider jusqu’où couper les bases peu fiables.
 
 ``` r
@@ -77,7 +77,7 @@ names(filtFs) <- sample.names
 names(filtRs) <- sample.names
 ```
 
-# Nettoie les fichiers FASTQ : coupe les lectures à 240/160 bases, enlève celles de mauvaise qualité (trop d’erreurs, bases inconnues, séquences PhiX) et enregistre les lectures filtrées.
+Nettoie les fichiers FASTQ : coupe les lectures à 240/160 bases, enlève celles de mauvaise qualité (trop d’erreurs, bases inconnues, séquences PhiX) et enregistre les lectures filtrées.
 
 ``` r
 out <- filterAndTrim(fnFs, filtFs, fnRs, filtRs, truncLen=c(240,160),
@@ -94,7 +94,7 @@ head(out)
     ## F3D143_S209_L001_R1_001.fastq     3178      2941
     ## F3D144_S210_L001_R1_001.fastq     4827      4312
 
-\#création d’un modèle d’erreur à partir des fichiers filtrés (forward )
+création d’un modèle d’erreur à partir des fichiers filtrés (forward )
 pour estimer la probabilité d’erreurs de séquençage selon la qualité
 
 ``` r
@@ -103,7 +103,7 @@ errF <- learnErrors(filtFs, multithread=TRUE)
 
     ## 33514080 total bases in 139642 reads from 20 samples will be used for learning the error rates.
 
-\#Création d’un modèle d’erreur à partir des fichiers filtrés (reverse )
+Création d’un modèle d’erreur à partir des fichiers filtrés (reverse )
 pour estimer la probabilité d’erreurs de séquençage selon la qualité.
 
 ``` r
@@ -112,7 +112,7 @@ errR <- learnErrors(filtRs, multithread=TRUE)
 
     ## 22342720 total bases in 139642 reads from 20 samples will be used for learning the error rates.
 
-\#Afficher un graphique des taux d’erreur observés vs prévus pour
+Afficher un graphique des taux d’erreur observés vs prévus pour
 vérifier que le modèle d’erreur appris correspond bien aux données.
 
 ``` r
@@ -124,7 +124,7 @@ plotErrors(errF, nominalQ=TRUE)
 
 ![](dada2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
-\#Débruite les lectures filtrées avec le modèle d’erreur pour identifier
+Débruite les lectures filtrées avec le modèle d’erreur pour identifier
 les vraies variantes (ASV),puis affiche le résultat du premier
 échantillon pour voir combien de variantes ont été détectées(Forward).
 
@@ -153,7 +153,7 @@ dadaFs <- dada(filtFs, err=errF, multithread=TRUE)
     ## Sample 19 - 6504 reads in 1709 unique sequences.
     ## Sample 20 - 4314 reads in 897 unique sequences.
 
-\#Débruite les lectures filtrées avec le modèle d’erreur pour identifier
+Débruite les lectures filtrées avec le modèle d’erreur pour identifier
 les vraies variantes (ASV),puis affiche le résultat du premier
 échantillon pour voir combien de variantes ont été détectées(Reverse).
 
@@ -182,7 +182,7 @@ dadaRs <- dada(filtRs, err=errR, multithread=TRUE)
     ## Sample 19 - 6504 reads in 1502 unique sequences.
     ## Sample 20 - 4314 reads in 732 unique sequences.
 
-\#Affiche le résultat du débruitage pour le premier échantillon forward
+Affiche le résultat du débruitage pour le premier échantillon forward
 (nombre de variantes détectées = 128 et infos associées)
 
 ``` r
@@ -193,7 +193,7 @@ dadaFs[[1]]
     ## 128 sequence variants were inferred from 1979 input unique sequences.
     ## Key parameters: OMEGA_A = 1e-40, OMEGA_C = 1e-40, BAND_SIZE = 16
 
-\#Fusionne les lectures forward et reverse pour chaque échantillon puis
+Fusionne les lectures forward et reverse pour chaque échantillon puis
 affiche les premières séquences fusionnées du premier échantillon.
 
 ``` r
@@ -269,7 +269,7 @@ dim(seqtab)
 
     ## [1]  20 293
 
-\#Vérifie la longueur de chaque séquence et indique combien de séquences
+Vérifie la longueur de chaque séquence et indique combien de séquences
 ont la même taille.
 
 ``` r
@@ -281,7 +281,7 @@ table(nchar(getSequences(seqtab)))
     ## 251 252 253 254 255 
     ##   1  88 196   6   2
 
-\#Supprime les séquences chimériques de la table ASV puis affiche le
+Supprime les séquences chimériques de la table ASV puis affiche le
 nombre d’échantillons et de variants restants
 
 ``` r
@@ -296,7 +296,7 @@ dim(seqtab.nochim)
 
     ## [1]  20 232
 
-\#Donne le pourcentage de séquences qui restent après avoir retiré les
+Donne le pourcentage de séquences qui restent après avoir retiré les
 chimères.
 
 ``` r
