@@ -13,7 +13,10 @@ body {
 }
 
 p {
-  color:#000000
+  color: #000000;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
+  border-radius: 6px;
 }
 
 /* Lisibilité du contenu sur fond image */
