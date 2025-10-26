@@ -571,4 +571,4 @@ ps.top20 <- prune_taxa(top20, ps.top20)
 plot_bar(ps.top20, x="Day", fill="Family") + facet_wrap(~When, scales="free_x")
 ```
 
-![](dada2_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
+![Classification des 20 familles les plus abondantes](assets/image/graph_dernier.png)<!-- -->
