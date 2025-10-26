@@ -66,7 +66,7 @@ qualité baisse et décider jusqu’où couper les bases peu fiables.
 plotQualityProfile(fnFs[1:2])
 ```
 
-![](dada2_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![Quality score profile](assets/image/quality_score.png)
 Définir les chemins de sortie pour les fastq filtrés.
 
 ``` r
@@ -122,7 +122,7 @@ plotErrors(errF, nominalQ=TRUE)
     ## Warning: Transformation introduced infinite values in continuous y-axis
     ## Transformation introduced infinite values in continuous y-axis
 
-![](dada2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![error frequency](assets/image/error_frequency.png)
 
 Débruite les lectures filtrées avec le modèle d’erreur pour identifier
 les vraies variantes (ASV),puis affiche le résultat du premier
@@ -570,7 +570,7 @@ plot_richness(ps, x="Day", measures=c("Shannon", "Simpson"), color="When")
     ## 
     ## We recommended that you find the un-trimmed data and retry.
 
-![](dada2_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+![Alpha diversity mesure depending on days](assets/image/plot_1.png)
 
 Normalise les données en proportions pour rendre les échantillons comparables,
 
@@ -624,7 +624,7 @@ en colorant les points selon la variable “When” (Early ou Late) afin d’obs
 plot_ordination(ps.prop, ord.nmds.bray, color="When", title="Bray NMDS")
 ```
 
-![](dada2_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
+![Bray NMDS](assets/image/plot_avant_dernier.png)
 
 Sélectionne les 20 familles les plus abondantes, normalise les abondances en proportions,
 
