@@ -1,7 +1,17 @@
 R Notebook
 ================
 
-Cette première commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
+Cette première commande sert à charger le package DADA2 et vérifier sa version (utile pour la reproductibilité des résultats) — ici, c’est la version 1.28.0.
+
+``` r
+library(dada2)
+packageVersion("dada2")
+```
+
+    ## [1] ‘1.28.0’
+
+
+Cette deuxième commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
 
 ``` r
 path <- "~/tutirial_ADM/MiSeq_SOP"
@@ -32,20 +42,6 @@ list.files(path)
     ## [43] "mouse.dpw.metadata"            "mouse.time.design"            
     ## [45] "stability.batch"               "stability.files"
 
-Charger le package DADA2 et vérifier sa version (utile pour la
-reproductibilité des résultats) — ici, c’est la version 1.28.0.
-
-``` r
-library(dada2)
-```
-
-    ## Loading required package: Rcpp
-
-``` r
-packageVersion("dada2")
-```
-
-    ## [1] '1.28.0'
 
 On liste les fichiers R1 (forward) et R2 (reverse) avec list.files()
 puis on extrait le nom d’échantillon (ex. “F3D0”) du nom complet du
@@ -67,6 +63,17 @@ plotQualityProfile(fnFs[1:2])
 ```
 
 ![Quality score profile](assets/image/quality_score.png)
+
+
+Affiche les profils de qualité des deux premiers fichiers de lectures "reverse " (R2) afin d’évaluer la qualité des bases et déterminer les positions de coupure/troncature
+
+```{r}
+plotQualityProfile(fnRs[1:2])
+```
+
+![Quality score profile reverse](assets/image/quality_score_reverse.png)
+
+
 Définir les chemins de sortie pour les fastq filtrés.
 
 ``` r
