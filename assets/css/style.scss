@@ -107,31 +107,41 @@ small {
   display: none !important;
 }
 
-.nb-columns {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-}
 
-.nb-left, .nb-right {
-  flex: 1 1 0;
-  max-width: 50%;
+html, body {
   height: 100%;
-  overflow-y: auto;
-  scroll-behavior: smooth; 
-  padding-right: .5rem;
+  margin: 0;
 }
 
-.nb-right {
-  border-left: 1px solid #eaecef;
-  padding-left: 1rem;
+.wrapper {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper > header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid #eaecef;
+}
+
+.wrapper > section {
+  flex: 1 1 auto;
+  padding: 1.5rem 0;
+}
+
+.wrapper > section :where(h1,h2,h3,h4,h5,h6)[id] {
+  scroll-margin-top: 80px;
+}
+
+.wrapper > footer {
+  border-top: 1px solid #eaecef;
+  background: rgba(255,255,255,0.92);
 }
 
 @media (pointer: fine) {
-  body {
-    background-attachment: scroll;
-  }
+  body { background-attachment: scroll; }
 }
