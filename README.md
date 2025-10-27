@@ -1,3 +1,5 @@
+Exploration et Réanalyse du Pipeline DADA2 pour la détection des Variants Amplicon (ASVs)
+================
 R Notebook
 ================
 
@@ -11,7 +13,7 @@ packageVersion("dada2")
     ## [1] ‘1.28.0’
 
 
-Cette deuxième commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
+Cette commande sert à pointer vers le répertoire qui contient les fichiers FASTQ.La commande list.files(path) sert à afficher la liste des fichiers qui se trouvent dans le dossier (MiSeq_SOP) indiqué par path.
 
 ``` r
 path <- "~/tutirial_ADM/MiSeq_SOP"
